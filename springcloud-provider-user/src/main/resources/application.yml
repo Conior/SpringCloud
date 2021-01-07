@@ -1,0 +1,18 @@
+server:
+  port: 8001
+
+
+mybatis-plus:
+  type-aliases-package: com.wsj.springcloud.pojo
+#  config-location: classpath:mybatis/mybatis-config.xml
+  mapper-locations: classpath:mybatis/mapper/*.xml
+
+spring:
+  application:
+    name: springcloud-provider-user
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/bilibili?useUnicode=true&characterEncoding=UTF-8&serverTimezone=GMT&useSSL=true&autoReconnect=true&failOverReadOnly=false
+    username: root
+    password: 123456
