@@ -4,13 +4,11 @@ package com.wsj.springcloud.controller;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.wsj.springcloud.pojo.User;
 import com.wsj.springcloud.service.IUserService;
-import org.apache.ibatis.annotations.Delete;
-import org.apache.ibatis.annotations.Update;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
+import org.springframework.cloud.client.ServiceInstance;
+import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.web.bind.annotation.*;
 
-import java.sql.Wrapper;
 import java.util.List;
 
 /**
@@ -28,6 +26,9 @@ public class UserController {
 
     @Autowired
     IUserService userService;
+
+    @Autowired
+    DiscoveryClient discoveryClient;
 
     @PostMapping("/add")
     public boolean add(User user){
@@ -59,5 +60,24 @@ public class UserController {
     @GetMapping("/getAll")
     public List<User> getAll(){
          return userService.list();
+    }
+
+    @GetMapping("/discovery")
+    public Object discovery(){
+        List<String> services = discoveryClient.getServices();
+        for (String service: services){
+            System.out.println("service=======>:" + service);
+        }
+
+        List<ServiceInstance> instances = discoveryClient.getInstances("SPRINGCLOUD-PROVIDER-USER");
+        for (ServiceInstance instance: instances) {
+            System.out.println("instance=======>:" + instance.getHost()
+                    + ":" + instance.getPort()
+                    + "/" + instance.getUri()
+                    + "===>" + instance.getInstanceId()
+                    + "===>" + instance.getServiceId()
+                    + "===>" + instance.getScheme());
+        }
+        return services;
     }
 }
