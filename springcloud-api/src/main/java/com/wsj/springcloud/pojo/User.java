@@ -47,6 +47,8 @@ public class User extends Model<User> {
 
     private String isdelete;
 
+    private String dbSource;
+
 
     @Override
     protected Serializable pkVal() {

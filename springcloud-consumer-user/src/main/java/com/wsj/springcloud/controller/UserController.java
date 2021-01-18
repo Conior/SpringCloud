@@ -18,7 +18,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/consumer")
 public class UserController {
-    private static final String REST_URL_PREFIX = "http://localhost:8001";
+    private static final String REST_URL_PREFIX = "http://SPRINGCLOUD-PROVIDER-USER";
 
     @Autowired
     RestTemplate restTemplate;

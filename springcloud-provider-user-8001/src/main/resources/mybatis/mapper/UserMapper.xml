@@ -14,11 +14,12 @@
         <result column="phone" property="phone" />
         <result column="email" property="email" />
         <result column="isdelete" property="isdelete" />
+        <result column="db_source" property="dbSource" />
     </resultMap>
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        id, creator, modifier, gmt_create, gmt_modified, username, password, phone, email, isdelete
+        id, creator, modifier, gmt_create, gmt_modified, username, password, phone, email, isdelete, db_source
     </sql>
 
 </mapper>
