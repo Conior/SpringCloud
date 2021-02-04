@@ -1,0 +1,32 @@
+server:
+  port: 8001
+
+#mybatis配置
+mybatis-plus:
+  type-aliases-package: com.wsj.springcloud.pojo
+  config-location: classpath:mybatis/mybatis-config.xml
+  mapper-locations: classpath:mybatis/mapper/*.xml
+
+#spring配置
+spring:
+  application:
+    name: springcloud-provider-user
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/bilibili?useUnicode=true&characterEncoding=UTF-8&serverTimezone=GMT&useSSL=true&autoReconnect=true&failOverReadOnly=false
+    username: root
+    password: 123456
+
+#Eureka配置
+eureka:
+  client: # 服务注册到哪里
+    service-url:
+      defaultZone: http://eureka7001.com:7001/eureka/,http://eureka7002.com:7002/eureka/,http://eureka7003.com:7003/eureka/
+  instance:
+    instance-id: springcloud-provider-user-hystrix-8001   # 修改eureka上默认的描述信息（status栏）
+
+#info配置（点击描述信息之后可以获取到以下自定义信息）
+info:
+  app.name: spring-cloud练习
+  company.name: com.wsj.spring-cloud
