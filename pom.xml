@@ -19,6 +19,7 @@
         <module>springcloud-provider-user-8003</module>
         <module>springcloud-consumer-user-feign</module>
         <module>springcloud-provider-user-hystrix-8001</module>
+        <module>springcloud-consumer-hystrix-dashboard</module>
     </modules>
 
     <packaging>pom</packaging>
