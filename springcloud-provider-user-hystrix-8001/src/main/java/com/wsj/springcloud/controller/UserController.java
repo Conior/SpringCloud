@@ -3,7 +3,6 @@ package com.wsj.springcloud.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
-import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
 import com.wsj.springcloud.pojo.User;
 import com.wsj.springcloud.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -93,7 +92,7 @@ public class UserController {
 
     public User failGet(@PathVariable("id") Long id){
         return new User().setId(Integer.parseInt(id+""))
-                .setUsername("id=====>" + id + "没有查找到对应的信息")
+                .setUsername("id=====>" + id + "没有查找到对应的信息(服务熔断)")
                 .setDbSource("no search dbSource in MYSQL");
     }
 }

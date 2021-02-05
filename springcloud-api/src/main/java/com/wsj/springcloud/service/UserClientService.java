@@ -1,6 +1,7 @@
 package com.wsj.springcloud.service;
 
 import com.wsj.springcloud.pojo.User;
+import com.wsj.springcloud.service.factory.UserClientServiceFallbackFactory;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -16,7 +17,7 @@ import java.util.List;
  * @date 2021/1/28 11:29 上午
  */
 // value是提供服务的服务名    path是接口的公共路径
-@FeignClient(value = "SPRINGCLOUD-PROVIDER-USER",path = "/user")
+@FeignClient(value = "SPRINGCLOUD-PROVIDER-USER",path = "/user",fallbackFactory = UserClientServiceFallbackFactory.class)
 @Component
 public interface UserClientService {
 
